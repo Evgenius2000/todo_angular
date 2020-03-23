@@ -1,6 +1,7 @@
+import { TodoModel } from './todoModel';
 import { Injectable } from '@angular/core';
 
-import { TodoItem } from './todo-items';
+import { ITodoItem } from './Itodo-item';
 import { StorageService } from './storage.service';
 import { BehaviorSubject } from 'rxjs';
 
@@ -9,29 +10,24 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TodoService {
-  private todos: TodoItem[] = [];
-  // private task:TodoItem = {
-  //   date: Date.now(),
-  //   importance:0,
-  //   content:'',
-  //   done:false
-  // };
+  private todos: ITodoItem[] = [];
+
   private subj: BehaviorSubject<any> = new BehaviorSubject([]);
   
   constructor( private model: StorageService) { 
     this.todos = this.model.load();  
-    console.log(this.todos);  
+ //   console.log(this.todos);  
+  };
+
+  get items() {
+    return this.subj.asObservable();
   }
 
-
-
-  add (task: TodoItem){
-
-    this.todos.push(task);
+  add (content : string){
+    let todo: TodoModel  = new TodoModel(content);     
+    this.todos.push(todo);
     this.subj.next(this.todos);
     this.save();
-
-    console.log(this.todos);
   }
   load() {
     this.todos = this.model.load();
@@ -41,4 +37,20 @@ export class TodoService {
   save() {
     this.model.save(this.todos);
   }
+  remove(date:number){
+    let index: number = 0;
+
+    this.todos.forEach(i => {
+      if (i.date == date){
+        index = this.todos.indexOf(i);
+      }
+    });
+
+    this.todos.splice(index,1);
+    this.subj.next(this.todos);
+    this.save();
+  }
+
+  
 }
+

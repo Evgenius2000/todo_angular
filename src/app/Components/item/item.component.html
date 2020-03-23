@@ -1,1 +1,4 @@
-<p>item works!</p>
+
+<div >{{item.date}} {{item.importance}} {{item.content}} {{item.done}}
+    <button (click)="this.todoSvc.remove(this.item.date)">X</button>
+</div> 
