@@ -17,6 +17,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   add(){
+    this.todoText = this.todoText.trim();
+    if(!this.todoText.length || this.todoText.length > 200){
+      return window.alert(`Min 1, Max 200 characters! You have enter ${this.todoText.length} smbols`);
+    }
     this.todoSvc.add(this.todoText);
     this.todoText = '';
   }

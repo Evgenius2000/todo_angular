@@ -1,4 +1,22 @@
 
-<div >{{item.date}} {{item.importance}} {{item.content}} {{item.done}}
-    <button (click)="this.todoSvc.remove(this.item.date)">X</button>
+<div class="flex-row">
+    <div class="d-flex flex-column taskcol timeDiv">
+        <div>{{item.date | date:'dd-MM-yyyy'}}</div>
+        <div>{{item.date | date:'hh:mm'}}</div>
+    </div>
+    <div class="d-flex flex-row taskcol priority">{{item.importance}}</div>
+    <div class="d-flex taskcol flex-column">
+     <img src="../../../assets/images/buttons/priorityup.png" (click)="this.todoSvc.prio(this.item.date, true)">
+     <img src="../../../assets/images/buttons/prioritydown.png" (click)="this.todoSvc.prio(this.item.date, false)">
+    </div>
+    <div class="d-flex flex-row description" [ngClass]="{'done': item.done}">{{item.content}}</div>
+    <img src="../../../assets/images/buttons/edit.png" class="taskcol" onclick=editShowModal()>
+    <div (click)="this.todoSvc.done(this.item.date)">
+        <img src="../../../assets/images/buttons/done.png" class="taskcol" *ngIf="item.done; else inprocess">
+        <ng-template #inprocess>
+            <img class="taskcol" src="../../../assets/images/buttons/inprocess.png">
+        </ng-template>
+    </div>
+    <img src="../../../assets/images/buttons/delete.png" class="taskcol" (click)="this.todoSvc.remove(this.item.date)">    
+    
 </div> 

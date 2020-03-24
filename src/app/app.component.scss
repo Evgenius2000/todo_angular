@@ -1,5 +1,14 @@
-body{
-    max-width: 1250px;
+div{
+    max-width: 1024px;
     margin: auto;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
 }
+
+app-footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+  }

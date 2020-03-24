@@ -8,9 +8,7 @@ import { TodoService } from './shared/todo.service'
 })
 export class AppComponent {
   title = 'todo';
-  constructor(
-    private taskSvc: TodoService
-  ){}
+  constructor(public taskSvc: TodoService){}
   
   ngOnInit (){
     this.taskSvc.items.subscribe()
