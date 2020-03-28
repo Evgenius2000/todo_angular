@@ -8,9 +8,13 @@ import { TodoService } from './shared/todo.service'
 })
 export class AppComponent {
   title = 'todo';
+  modalWindow: boolean = true;
   constructor(public taskSvc: TodoService){}
   
   ngOnInit (){
     this.taskSvc.items.subscribe()
   }
+  // showModalWindow(a,b){
+
+  // }
 }

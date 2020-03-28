@@ -10,13 +10,14 @@
      <img src="../../../assets/images/buttons/prioritydown.png" (click)="this.todoSvc.prio(this.item.date, false)">
     </div>
     <div class="d-flex flex-row description" [ngClass]="{'done': item.done}">{{item.content}}</div>
-    <img src="../../../assets/images/buttons/edit.png" class="taskcol" onclick=editShowModal()>
+    <img src="../../../assets/images/buttons/edit.png" class="taskcol" (click)="onModal('edit')">
     <div (click)="this.todoSvc.done(this.item.date)">
         <img src="../../../assets/images/buttons/done.png" class="taskcol" *ngIf="item.done; else inprocess">
         <ng-template #inprocess>
             <img class="taskcol" src="../../../assets/images/buttons/inprocess.png">
         </ng-template>
     </div>
-    <img src="../../../assets/images/buttons/delete.png" class="taskcol" (click)="this.todoSvc.remove(this.item.date)">    
+    <img src="../../../assets/images/buttons/delete.png" class="taskcol" (click)="onModal('del')">    
+    <!-- (click)="this.todoSvc.remove(this.item.date)" -->
     
 </div> 

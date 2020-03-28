@@ -17,5 +17,8 @@ export class MainComponent implements OnInit {
     this.todoSvc.load();
     this.items = this.todoSvc.items;
   }
+  showEmit(event){
+    console.log(event)
+  }
 
 }

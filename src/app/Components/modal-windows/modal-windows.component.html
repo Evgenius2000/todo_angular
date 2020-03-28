@@ -1,0 +1,29 @@
+<div class="modal-window" #modalWindow>
+
+
+    <div class="back-in-black"></div>
+    <div class="edit">
+        <h2>... задание?</h2>
+        <div>
+            текст задания    
+        </div>
+        <div class="btn-block">
+            <button class="btn btn-confirm">Да</button>
+            <button class="btn btn-close">Закрыть</button>
+        </div>
+    </div>
+    <ng-template #name>
+        
+        <div class="delete">
+            <h2>... задание?</h2>
+            <div>
+                текст задания    
+            </div>
+            <div>
+                <button class="btn btn-confirm">Да</button>
+                <button class="btn btn-close" (click) = 'closeModal()'>Закрыть</button>
+            </div>
+        </div>
+
+    </ng-template>
+</div>

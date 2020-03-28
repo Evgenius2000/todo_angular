@@ -7,6 +7,7 @@ import { MainComponent } from './Components/main/main.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { ItemComponent } from './Components/item/item.component';
+import { ModalWindowsComponent } from './Components/modal-windows/modal-windows.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ItemComponent } from './Components/item/item.component';
     MainComponent,
     HeaderComponent,
     FooterComponent,
-    ItemComponent
+    ItemComponent,
+    ModalWindowsComponent
   ],
   imports: [
     BrowserModule, FormsModule
