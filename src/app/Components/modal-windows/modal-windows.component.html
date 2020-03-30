@@ -1,29 +1,41 @@
-<div class="modal-window" #modalWindow>
-
-
+<div class="modal-window">
     <div class="back-in-black"></div>
-    <div class="edit">
-        <h2>... задание?</h2>
-        <div>
-            текст задания    
+
+    <div class="area" *ngIf = "actionPack.mode else delContent">
+        <h2>Data: {{ actionPack.obj.date | date : 'dd-MM-yyyy'}}</h2>
+        <input [(ngModel)] = "actionPack.obj.content" >    
+        Importance rate {{ actionPack.obj.importance }}
+        <div *ngIf = 'actionPack.obj.done else uncompleted'>
+            Completed
         </div>
+        <ng-template #uncompleted>
+            <div>
+                NOT Completed
+            </div>            
+        </ng-template>        
         <div class="btn-block">
-            <button class="btn btn-confirm">Да</button>
-            <button class="btn btn-close">Закрыть</button>
+            <button class="btn btn-confirm" (click) = 'onSaveEdit()'>Да</button>
+            <button class="btn btn-close" (click) = 'onCancel()'>Закрыть</button>
         </div>
     </div>
-    <ng-template #name>
-        
-        <div class="delete">
-            <h2>... задание?</h2>
-            <div>
-                текст задания    
+
+    <ng-template #delContent>
+        <div class="area del">
+            <h2>Do you really want to delete </h2>
+                <label> {{ actionPack.obj.content }}</label>    
+            Importance rate {{ actionPack.obj.importance }} 
+            <div *ngIf = 'actionPack.obj.done else uncompleted'>
+                Completed
             </div>
-            <div>
-                <button class="btn btn-confirm">Да</button>
-                <button class="btn btn-close" (click) = 'closeModal()'>Закрыть</button>
+            <ng-template #uncompleted>
+                <div>
+                    NOT Completed
+                </div>            
+            </ng-template>        
+            <div class="btn-block">
+                <button class="btn btn-confirm" (click) = 'onDelete()'>Удалить</button>
+                <button class="btn btn-close" (click) = 'onCancel()'>Закрыть</button>
             </div>
         </div>
-
     </ng-template>
-</div>
+</div> 

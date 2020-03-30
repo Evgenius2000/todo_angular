@@ -1,4 +1,4 @@
-import { TodoService } from './../../shared/todo.service';
+import { TodoService } from '../../shared/todo.service';
 import { ITodoItem } from '../../shared/Itodo-item';
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 
@@ -10,14 +10,24 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 })
 export class ItemComponent {
 
-  @Output('modal') private modal = new EventEmitter<string>();
   @Input() item: ITodoItem;
+  @Output() private onAction: EventEmitter <any> = new EventEmitter();
 
   constructor(public todoSvc: TodoService) { }
-  
-  onModal(param:string){
-    console.log(param);
-    this.modal.emit(param)
+
+  onEdit(){
+    let pack = {
+      mode: true, 
+      obj: this.item
+    }
+    this.onAction.emit(pack)
+  }
+  onDel(){
+    let pack = {
+      mode: false, 
+      obj: this.item
+    }
+    this.onAction.emit(pack)
   }
 
 }

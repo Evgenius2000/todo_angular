@@ -1,10 +1,29 @@
 <div class="vert-strech">
   <app-header></app-header>
-  <app-main></app-main>
+  
+  <app-item 
+    [item]='item'
+    *ngFor="let item of items | async;let i = index"
+    (onAction)='onAction($event)'
+  >
+  </app-item> 
+
+  <h4 *ngIf="(items | async)?.length === 0">
+      List is empty! 
+  </h4>
+
   <app-footer     
   [count] = 'taskSvc.counts'
-  [completed] = 'taskSvc.completeds'></app-footer>
+  [completed] = 'taskSvc.completeds'>
+  </app-footer> 
 </div> 
-<app-modal-windows
-  *ngIf="this.modalWindow"
-></app-modal-windows>
+
+<app-modal-windows 
+  *ngIf="this.editModal"
+  [actionPack] = 'actionPack'
+  (cancel) = 'onCancel()'
+  (save) = onSave($event)
+  (delete) = onDel($event)
+  >
+</app-modal-windows>
+

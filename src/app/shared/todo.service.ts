@@ -91,6 +91,12 @@ export class TodoService {
     this.subj.next(this.todos);
     this.save();
   }
+  edit(item: TodoModel){
+    let index = this.findTask(item.date);
+    this.todos[index].content = item.content;
+    this.subj.next(this.todos);
+    this.save();
+  }
 
 
   

@@ -1,9 +1,0 @@
-<app-item 
-    [item] = 'item'
-    *ngFor="let item of items | async;let i = index"
-    (modal) = 'showEmit($event)'
-    >
-</app-item>
-<h4 *ngIf="(items | async)?.length === 0">
-    List is empty! 
-</h4>

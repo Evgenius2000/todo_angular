@@ -13,17 +13,23 @@ $left: $width / 2;
     right: 0;
     background-color: rgba($color: #000000, $alpha: 0.3);
 }
-.edit{
+.area{
     padding: 1rem;
     background-color: white;
     position: absolute;
     left: calc(50% - #{$left});
+    top: 30%;
     min-width: $width;
     min-height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    border: 2px solid silver;
+    border-radius: 12px;
+}
+.del{
+    background-color: rgb(196, 0, 0); 
 }
 
 .btn{

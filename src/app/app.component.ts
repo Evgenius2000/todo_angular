@@ -1,5 +1,7 @@
+import { TodoModel } from './shared/todoModel';
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from './shared/todo.service'
+import { Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +10,32 @@ import { TodoService } from './shared/todo.service'
 })
 export class AppComponent {
   title = 'todo';
-  modalWindow: boolean = true;
+  items: Observable<any>;
+  actionPack: TodoModel;
+  editModal:boolean = false;
+
   constructor(public taskSvc: TodoService){}
   
   ngOnInit (){
-    this.taskSvc.items.subscribe()
+    this.taskSvc.load();
+    this.items = this.taskSvc.items;
+    this.taskSvc.items.subscribe() 
   }
-  // showModalWindow(a,b){
+  onAction(item:TodoModel){
+    this.actionPack = item;
+    this.editModal = true;
+  }
+  onCancel(){
+    this.editModal = false;
+  }
 
-  // }
+  onSave(item:TodoModel){ // сохранение сервисом
+    this.editModal = false;
+    this.taskSvc.edit(item);
+  }
+  onDel(item:TodoModel){ // удаление сервисом
+    this.editModal = false;
+    this.taskSvc.remove(item.date);
+  }
+
 }
