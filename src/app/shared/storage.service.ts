@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class StorageService {
 
   storage: any = window.localStorage;  
+  url = 'https://jsonplaceholder.typicode.com/todos?_limit=10';
   readonly KEY: string = "ITEMS";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   save(data: any){
     let dataStr = JSON.stringify(data);
@@ -20,4 +23,10 @@ export class StorageService {
     return dataStr ? JSON.parse(dataStr) : [];
   }
 
+  loadFromPlceholder(){
+    return this.http.get(this.url)
+  }
+
+
+  
 }

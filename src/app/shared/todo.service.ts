@@ -48,6 +48,13 @@ export class TodoService {
   }
   load() {
     this.todos = this.model.load();
+    this.model.loadFromPlceholder().subscribe(response => {
+      console.log('Response: ', response)
+    });
+
+
+
+
     this.calculateFooter();
     this.subj.next(this.todos);
   }
@@ -57,14 +64,8 @@ export class TodoService {
     this.model.save(this.todos);
   }
 
-  findTask(date){
-    let index: number = 0;
-    this.todos.forEach(i => {
-      if (i.date == date){
-        index = this.todos.indexOf(i);
-      }
-    });
-    return index;
+  findTask(date:number){
+    return (this.todos.findIndex(item => item.date == date))
   }
 
   remove(date:number){
@@ -86,13 +87,13 @@ export class TodoService {
     this.save();
   }
   done (date: number){
-    let index = this.findTask(date);
+    const index = this.findTask(date);
     this.todos[index].done = !this.todos[index].done
     this.subj.next(this.todos);
     this.save();
   }
   edit(item: TodoModel){
-    let index = this.findTask(item.date);
+    const index = this.findTask(item.date);
     this.todos[index].content = item.content;
     this.subj.next(this.todos);
     this.save();

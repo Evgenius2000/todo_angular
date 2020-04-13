@@ -1,6 +1,9 @@
+import { todoFilterPipe } from './pipes/filter';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
@@ -13,11 +16,14 @@ import { ModalWindowsComponent } from './Components/modal-windows/modal-windows.
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ItemComponent,
-    ModalWindowsComponent
-  ],
+    ItemComponent, 
+    ModalWindowsComponent,
+    todoFilterPipe
+  ], 
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, 
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

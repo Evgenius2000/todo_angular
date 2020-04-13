@@ -1,5 +1,5 @@
 import { TodoModel } from './shared/todoModel';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { TodoService } from './shared/todo.service'
 import { Observable} from 'rxjs';
 
@@ -8,8 +8,11 @@ import { Observable} from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent {
   title = 'todo';
+  search = '';
   items: Observable<any>;
   actionPack: TodoModel;
   editModal:boolean = false;
@@ -36,6 +39,9 @@ export class AppComponent {
   onDel(item:TodoModel){ // удаление сервисом
     this.editModal = false;
     this.taskSvc.remove(item.date);
+  }
+  onSearch(event : string){
+    this.search = event;
   }
 
 }

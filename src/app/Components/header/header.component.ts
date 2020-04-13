@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TodoService } from '../../shared/todo.service';
-import { ITodoItem } from '../../shared/Itodo-item';
-
 
 @Component({
   selector: 'app-header',
@@ -11,6 +9,8 @@ import { ITodoItem } from '../../shared/Itodo-item';
 export class HeaderComponent implements OnInit {
 
   public todoText :any = '';
+  public search = '';
+  @Output() private searchEmit: EventEmitter<any> = new EventEmitter();
 
   constructor(public todoSvc: TodoService) { }
 
@@ -23,5 +23,8 @@ export class HeaderComponent implements OnInit {
     }
     this.todoSvc.add(this.todoText);
     this.todoText = '';
+  }
+  onSearch(){
+    this.searchEmit.emit(this.search);
   }
 }
