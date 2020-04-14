@@ -19,13 +19,13 @@ export class TodoModel implements ITodoItem {
 
 export class TodoModelInet implements ITodoInet {
     
-    public userID: number;
+    public userId: number;
     public id: number;
     public title: string;
     public completed: boolean;
     
-    constructor (userID: number, id: number, title :string, completed: boolean){
-        this.userID = userID;
+    constructor (userId: number, id: number, title :string, completed: boolean){
+        this.userId = userId;
         this.id = id;
         this.title = title;
         this.completed = completed;

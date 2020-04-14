@@ -1,4 +1,11 @@
 <div class="vert-strech">
+  <div>
+    <ul>
+      <li>локальные данные</li>
+      <li>данные с сервера</li>
+    </ul>
+  </div>
+
   <app-header
   (searchEmit) = 'onSearch($event)'
   ></app-header>
@@ -9,16 +16,14 @@
     (onAction)='onAction($event)'
   >
   </app-item> 
-  <app-inet-data></app-inet-data>
-
   <h4 *ngIf="((items | async | filter:this.search)?.length === 0)">
     can't find such tasks! 
   </h4> 
-
   <h4 *ngIf="((items | async)?.length === 0)">
       List is empty! 
   </h4>
 
+  <app-inet-data></app-inet-data>
   <app-footer     
   [count] = 'taskSvc.counts'
   [completed] = 'taskSvc.completeds'>

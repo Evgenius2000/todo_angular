@@ -5,11 +5,11 @@
     <td class="cell completed">completed</td>
 </tr>
 
-<p *ngFor="item of inetTodos; let i = index">
+<p *ngFor= "item of inetTodos; let i = index">
         <tr>
             <td class="cell user-id">{{inetTodos[i].userId}}</td>
             <td class="cell id">{{inetTodos[i].id}}</td>
             <td class="cell title">{{inetTodos[i].title}}</td>
             <td class="cell completed">{{inetTodos[i].completed}}</td>
         </tr>
-</p>
+</p> 

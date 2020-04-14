@@ -11,6 +11,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { ItemComponent } from './Components/item/item.component';
 import { ModalWindowsComponent } from './Components/modal-windows/modal-windows.component';
 import { InetDataComponent } from './Components/inet-data/inet-data.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { InetDataComponent } from './Components/inet-data/inet-data.component';
   imports: [
     BrowserModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
