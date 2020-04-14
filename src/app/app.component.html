@@ -9,6 +9,7 @@
     (onAction)='onAction($event)'
   >
   </app-item> 
+  <app-inet-data></app-inet-data>
 
   <h4 *ngIf="((items | async | filter:this.search)?.length === 0)">
     can't find such tasks! 

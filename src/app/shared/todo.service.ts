@@ -48,13 +48,6 @@ export class TodoService {
   }
   load() {
     this.todos = this.model.load();
-    this.model.loadFromPlceholder().subscribe(response => {
-      console.log('Response: ', response)
-    });
-
-
-
-
     this.calculateFooter();
     this.subj.next(this.todos);
   }

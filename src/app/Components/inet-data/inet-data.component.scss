@@ -1,0 +1,32 @@
+.cell{    
+    border: 1px solid silver;   
+}
+.header{
+    font-weight: bold;
+    color: brown;
+}
+
+tr{
+    width: 100%;    
+    td{
+        text-align: center;
+        padding: 1em;
+        &.user-id{
+            min-width: 55px;
+        }
+        &.id{
+
+            min-width: 30px;
+        }
+        &.title{
+            width: 100%;
+            text-align: left;
+        }
+        &.completed{
+            min-width: 90px;
+        }
+    }
+}
+p:nth-child(even){
+    background-color: rgb(212, 212, 231);
+}

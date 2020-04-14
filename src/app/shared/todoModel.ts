@@ -1,4 +1,5 @@
 import { ITodoItem } from './Itodo-item'
+import { ITodoInet } from './Itodo-inet'
 
 export class TodoModel implements ITodoItem {
     
@@ -12,6 +13,22 @@ export class TodoModel implements ITodoItem {
         this.importance = 0;
         this.content = content;
         this.done = false;
+    }
+    
+}
+
+export class TodoModelInet implements ITodoInet {
+    
+    public userID: number;
+    public id: number;
+    public title: string;
+    public completed: boolean;
+    
+    constructor (userID: number, id: number, title :string, completed: boolean){
+        this.userID = userID;
+        this.id = id;
+        this.title = title;
+        this.completed = completed;
     }
     
 }

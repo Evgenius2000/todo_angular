@@ -10,6 +10,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { ItemComponent } from './Components/item/item.component';
 import { ModalWindowsComponent } from './Components/modal-windows/modal-windows.component';
+import { InetDataComponent } from './Components/inet-data/inet-data.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ModalWindowsComponent } from './Components/modal-windows/modal-windows.
     FooterComponent,
     ItemComponent, 
     ModalWindowsComponent,
-    todoFilterPipe
+    todoFilterPipe,
+    InetDataComponent
   ], 
   imports: [
     BrowserModule, 

@@ -25,8 +25,5 @@ export class StorageService {
 
   loadFromPlceholder(){
     return this.http.get(this.url)
-  }
-
-
-  
+  }  
 }
