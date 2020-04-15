@@ -11,7 +11,9 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { ItemComponent } from './Components/item/item.component';
 import { ModalWindowsComponent } from './Components/modal-windows/modal-windows.component';
 import { InetDataComponent } from './Components/inet-data/inet-data.component';
-import { AppRoutingModule } from './app-routing.module';
+import { appRoutes } from './app-routing.module';
+import { LocalDataComponent } from './Components/local-data/local-data.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,14 @@ import { AppRoutingModule } from './app-routing.module';
     ItemComponent, 
     ModalWindowsComponent,
     todoFilterPipe,
-    InetDataComponent
+    InetDataComponent,
+    LocalDataComponent
   ], 
   imports: [
     BrowserModule, 
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

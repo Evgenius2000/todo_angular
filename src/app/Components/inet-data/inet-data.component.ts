@@ -10,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InetDataComponent implements OnInit {
 
-  public inetTodos: ITodoInet;
+  public inetTodos: ITodoInet[] = [];
+  loading: boolean = false; // Сделать ожидание загрузки
   constructor(public storageSvc:StorageService) { }
 
   ngOnInit(): void {
-  this.storageSvc.loadFromPlceholder().subscribe((response:ITodoInet) => {
+  this.storageSvc.loadFromPlceholder().subscribe((response:ITodoInet[]) => {
     this.inetTodos = response;
-    console.log('inetTodos: ', this.inetTodos)        
     });
   }
 

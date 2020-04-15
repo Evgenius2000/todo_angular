@@ -1,3 +1,4 @@
+import { ITodoInet } from './Itodo-inet';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,6 +25,6 @@ export class StorageService {
   }
 
   loadFromPlceholder(){
-    return this.http.get(this.url)
+    return this.http.get<ITodoInet[]>(this.url)
   }  
 }
