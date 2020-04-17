@@ -1,5 +1,3 @@
-import { ISearchAndFilt } from './../../shared/ISearchAndFilt';
-import { SearchAndFiltModel } from './../../shared/todoModel';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TodoService } from '../../shared/todo.service';
@@ -12,7 +10,12 @@ import { TodoService } from '../../shared/todo.service';
 export class HeaderComponent implements OnInit {
 
   public todoText :any = '';
-  public searchAndFilt :ISearchAndFilt = new SearchAndFiltModel();
+  public search = '';
+  public sort = {
+    byDate: false,
+    byImportance: false,
+    byDone: false,
+  }
   @Output() private searchFiltEmit: EventEmitter<any> = new EventEmitter();
 
   myForm: FormGroup;
@@ -20,11 +23,12 @@ export class HeaderComponent implements OnInit {
   constructor(public todoSvc: TodoService) { 
         this.myForm = new FormGroup(
         {'task': new FormControl('', [
-          Validators.minLength(6),
-          Validators.required ])}
+          Validators.minLength(6), 
+          Validators.required])}
       )
   }
   ngOnInit(): void { 
+    console.log(this.myForm.get('task').errors);    
   }
 
   bindTodoText(){
@@ -38,44 +42,23 @@ export class HeaderComponent implements OnInit {
         return window.alert(`Min 1, Max 200 characters! You have enter ${this.todoText.length} smbols`);
       }
       this.todoSvc.add(this.todoText);
-      //this.todoText = '';
       this.myForm.patchValue({task:''})
     }
   }
   onSearchAndFilt(){
-    this.searchAndFilt.dateFilter = null;
-    this.searchAndFilt.priorityFilter = null;
-    this.searchAndFilt.copleateFilter = null;
-    this.searchFiltEmit.emit(this.searchAndFilt);
+    this.searchFiltEmit.emit(this.search);
   }
   onDataFilt(){
-    if (this.searchAndFilt.dateFilter == null){
-      this.searchAndFilt.dateFilter = true
-    } else {
-      this.searchAndFilt.dateFilter = !this.searchAndFilt.dateFilter; 
-    }
-    this.searchAndFilt.priorityFilter = null;
-    this.searchAndFilt.copleateFilter = null;
-    this.searchFiltEmit.emit(this.searchAndFilt);
+    this.sort.byDate = !this.sort.byDate
+    this.todoSvc.sortByDate(this.sort.byDate)
   }
   onPriorityFilt(){
-    if (this.searchAndFilt.priorityFilter == null){
-      this.searchAndFilt.priorityFilter = true
-    } else {
-      this.searchAndFilt.priorityFilter = !this.searchAndFilt.priorityFilter; 
-    }
-    this.searchAndFilt.dateFilter = null;
-    this.searchAndFilt.copleateFilter = null;
-    this.searchFiltEmit.emit(this.searchAndFilt);
+    this.sort.byImportance = !this.sort.byImportance
+    this.todoSvc.sortByImportance(this.sort.byImportance)  
   } 
   onCompleteFilt(){
-    if (this.searchAndFilt.copleateFilter == null){
-      this.searchAndFilt.copleateFilter = true
-    } else {
-      this.searchAndFilt.copleateFilter = !this.searchAndFilt.copleateFilter; 
-    }
-    this.searchAndFilt.dateFilter = null;
-    this.searchAndFilt.priorityFilter = null;
-    this.searchFiltEmit.emit(this.searchAndFilt);
+    this.sort.byDone = !this.sort.byDone
+    this.todoSvc.sortByDone(this.sort.byDone) 
   }
+
 }

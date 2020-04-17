@@ -5,14 +5,14 @@
   
   <app-item 
     [item]='item'
-    *ngFor="let item of items | async | filter:this.search.search ;let i = index"
+    *ngFor="let item of items | async | filter:this.search;let i = index"
     (onAction)='onAction($event)'>
   </app-item> 
-  <h4 *ngIf="((items | async | filter:this.search.search)?.length === 0)">
+  <h4 *ngIf="((items | async | filter:this.search)?.length === 0)">
     can't find such tasks! 
   </h4> 
   <h4 *ngIf="((items | async)?.length === 0)">
-      List is empty! 
+      List is empty!  
   </h4>
 
   <app-footer     

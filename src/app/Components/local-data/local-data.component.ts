@@ -1,5 +1,3 @@
-import { SearchAndFiltModel } from './../../shared/todoModel';
-import { ISearchAndFilt } from './../../shared/ISearchAndFilt';
 import { Component, OnInit } from '@angular/core';
 import { TodoModel } from '../../shared/todoModel';
 import { TodoService } from '../../shared/todo.service'
@@ -14,7 +12,7 @@ export class LocalDataComponent implements OnInit {
 
 
   title = "todo's by Monah";
-  public search :ISearchAndFilt = new SearchAndFiltModel();
+  public search = '';
   items: Observable<any>;
   actionPack: TodoModel;
   editModal:boolean = false; 
@@ -47,7 +45,7 @@ export class LocalDataComponent implements OnInit {
     this.taskSvc.remove(item.date);
   }
 
-  onSearchAndFilt(event : ISearchAndFilt){
+  onSearchAndFilt(event : string){
     this.search = event;
 
   }
