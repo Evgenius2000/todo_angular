@@ -6,18 +6,18 @@
     </div>
     <div class="d-flex flex-row taskcol priority">{{item.importance}}</div>
     <div class="d-flex taskcol flex-column">
-     <img src="../../../assets/images/buttons/priorityup.png" (click)="this.todoSvc.prio(this.item.date, true)">
-     <img src="../../../assets/images/buttons/prioritydown.png" (click)="this.todoSvc.prio(this.item.date, false)">
+     <img src="../../../assets/images/buttons/priorityup.png" alt="importance up" (click)="this.todoSvc.prio(this.item.date, true)">
+     <img src="../../../assets/images/buttons/prioritydown.png" alt="importance down" (click)="this.todoSvc.prio(this.item.date, false)">
     </div>
     <div class="d-flex flex-row description" [ngClass]="{'done': item.done}">{{item.content}}</div>
-    <img src="../../../assets/images/buttons/edit.png" class="taskcol" (click)="onEdit()">
+    <img src="../../../assets/images/buttons/edit.png" class="taskcol" alt="edit" (click)="onEdit()">
     <div (click)="this.todoSvc.done(this.item.date)">
-        <img src="../../../assets/images/buttons/done.png" class="taskcol" *ngIf="item.done; else inprocess">
+        <img src="../../../assets/images/buttons/done.png" class="taskcol" alt="done" *ngIf="item.done; else inprocess">
         <ng-template #inprocess>
-            <img class="taskcol" src="../../../assets/images/buttons/inprocess.png">
+            <img class="taskcol" src="../../../assets/images/buttons/inprocess.png" alt="undone">
         </ng-template>
     </div>
-    <img src="../../../assets/images/buttons/delete.png" class="taskcol" (click)="onDel()">    
+    <img src="../../../assets/images/buttons/delete.png" class="taskcol" alt="delete" (click)="onDel()">    
 
     
 </div> 
