@@ -5,7 +5,11 @@
     <button type="submit" class="btn" [disabled]="myForm.invalid"> Add </button>     
   </div>
 
-  <small *ngIf="myForm.get('task').invalid">Задание не можедт быть меньше 6-ти символов</small>
+    <p>
+      <small *ngIf="(myForm.get('task').invalid && myForm.get('task').value != '' )">Задание не можедт быть меньше 6-ти символов</small>
+      <small class="hint" *ngIf="(myForm.get('task').untouched && !myForm.get('task').dirty || myForm.get('task').value == '')">Задача не должна быть пустой</small>    
+    </p>
+
 
   <hr>
   <p>Сортировки и поиск</p> 

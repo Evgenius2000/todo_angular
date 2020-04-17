@@ -25,10 +25,9 @@ export class HeaderComponent implements OnInit {
         {'task': new FormControl('', [
           Validators.minLength(6), 
           Validators.required])}
-      )
+      ) 
   }
   ngOnInit(): void { 
-    console.log(this.myForm.get('task').errors);    
   }
 
   bindTodoText(){

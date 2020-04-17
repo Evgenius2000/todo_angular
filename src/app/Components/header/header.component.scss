@@ -27,14 +27,13 @@ small{
 }
 
 input{
-    &.ng-valid.ng-touched{
+    &.ng-valid{
         border: 1px solid green
-    }
-    &.ng-invalid.ng-touched{
-        border: 1px solid red
     }
 
 }
+
+
 .btn{
     background-color: rgb(48, 74, 129);
     color: white;

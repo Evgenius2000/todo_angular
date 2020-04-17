@@ -7,8 +7,7 @@ import { TodoModel } from '../shared/todoModel';
 
 export class todoFilterPipe implements PipeTransform {
     transform(todos: TodoModel[], search?: string){
-        console.log(search);
-        if (!search.search || !search.trim) return todos;       
+        if (!search.search || search.trim() == '') return todos;       
         return todos.filter(todo => todo.content.includes(search))
     }   
 }

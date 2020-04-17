@@ -16,7 +16,7 @@ export class TodoService {
   private subj: BehaviorSubject<any> = new BehaviorSubject([]);
   
   constructor( private model: StorageService) { 
-    this.todos = this.model.load();  
+    this.todos = this.model.load();
   };
 
   get items() {
@@ -94,21 +94,12 @@ export class TodoService {
 
   sortByDate(flag:boolean){
     flag ? this.todos = this.todos.sort((a,b) => a.date-b.date) : this.todos = this.todos.sort((a,b) => b.date-a.date);
-    this.subj.next(this.todos);
-    console.log('data',flag,this.todos);
   }
   sortByImportance(flag:boolean){
-
-    if (flag) this.todos = this.todos.sort((a,b) => a.importance-b.importance);
-    else this.todos = this.todos.sort((a,b) => b.importance-a.importance);
-    this.subj.next(this.todos);
-    console.log('importance',flag,this.todos);
+    flag ? this.todos = this.todos.sort((a,b) => a.importance-b.importance) : this.todos = this.todos.sort((a,b) => b.importance-a.importance);
   }
   sortByDone(flag:boolean){
-    if (flag) this.todos = this.todos.sort((a,b) => (a.done === b.done)? 0 : a? -1 : 1);
-    else this.todos = this.todos.sort((a,b) => (b.done === a.done)? 0 : a? 1 : -1);
-    this.subj.next(this.todos);
-    console.log('done',flag,this.todos);
+    flag ? this.todos = this.todos.sort((a,b) => Number(a.done)-Number(b.done)) : this.todos = this.todos.sort((a,b) => Number(b.done)-Number(a.done));
   }  
 }
 
