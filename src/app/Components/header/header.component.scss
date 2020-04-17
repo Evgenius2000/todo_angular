@@ -14,4 +14,30 @@ div{
         margin: 10px;
     }
 }
+small{
+    background-color: rgb(252, 209, 209);
+    color: red;
+    font-size: small;
+    padding: 1 em;
+}
 
+.hint{
+    background-color: rgb(154, 201, 164);
+    color: rgb(0, 124, 6);
+}
+
+input{
+    &.ng-valid.ng-touched{
+        border: 1px solid green
+    }
+    &.ng-invalid.ng-touched{
+        border: 1px solid red
+    }
+
+}
+.btn{
+    background-color: rgb(48, 74, 129);
+    color: white;
+    padding: 3px 20px;
+    margin: 3pxpx;
+}

@@ -1,3 +1,4 @@
+import { ISearchAndFilt } from './ISearchAndFilt';
 import { ITodoItem } from './Itodo-item'
 import { ITodoInet } from './Itodo-inet'
 
@@ -29,6 +30,20 @@ export class TodoModelInet implements ITodoInet {
         this.id = id;
         this.title = title;
         this.completed = completed;
+    }    
+}
+
+export class SearchAndFiltModel implements ISearchAndFilt{
+    public search: string;
+    public dateFilter: boolean;
+    public priorityFilter: boolean;
+    public copleateFilter: boolean;
+
+    constructor (){
+        this.search = '';
+        this.dateFilter = null;
+        this.priorityFilter = null;
+        this.copleateFilter = null;
+
     }
-    
 }

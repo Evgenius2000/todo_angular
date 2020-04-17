@@ -1,8 +1,22 @@
 
+<form [formGroup]="myForm" (ngSubmit)="add()">
+  <div>
+    <input formControlName="task" type="text" class="form-control" placeholder="Введите, что выхотите сделать" (keyup)="bindTodoText()">
+    <button type="submit" class="btn" [disabled]="myForm.invalid"> Add </button>     
+  </div>
+
+  <small *ngIf="myForm.get('task').invalid else hint">Задание не можедт быть меньше 6-ти символов</small>
+  <ng-template #hint>
+    <small class="hint"></small> 
+  </ng-template>
+  <hr>
+  <p>Сортировки и поиск</p> 
+  <button class="btn" (click)="onDataFilt()">Дата</button>
+  <button class="btn" (click)="onPriorityFilt()">Приоритет</button>
+  <button class="btn" (click)="onCompleteFilt()">Готовность</button>
+  
+</form>
 <div>
-  <input [(ngModel)]="todoText" type="text" class="form-control" placeholder="Введите, что выхотите сделать">
-  <button class="btn" (click)="add()"> Add </button>     
+    <input [(ngModel)]='searchAndFilt.search' type="text" placeholder="найти...." (keyup) = onSearchAndFilt()>
 </div>
-<div>
-    <input [(ngModel)]='search' type="text" placeholder="найти...." (keyup) = onSearch()>
-</div>
+<hr>

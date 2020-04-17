@@ -1,9 +1,19 @@
+.wrap{
+    margin-top: 80px;
+}
+.navbar{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333333;  
+    top: 0;
     li {
         float: left; 
         display: block;
@@ -18,4 +28,5 @@ ul {
     .active {color:rgb(248, 175, 64);}
     cursor: pointer;
 }
+
 

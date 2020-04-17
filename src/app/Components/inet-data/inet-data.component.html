@@ -1,15 +1,24 @@
-<tr class="header">
-    <td class="cell user-id">userId</td>
-    <td class="cell id">id</td>
-    <td class="cell title">title</td>
-    <td class="cell completed">completed</td>
-</tr>
+<div  class="loadnig" *ngIf = 'loading else table'>
+    <img src="../../../assets/images/gif/cat-loading.gif" alt="loading">
+    <div>
+        Пока мы загружаем данные посмотрите на кота... ;)
+    </div>
+</div>
 
-<div *ngFor= "let item of inetTodos; let i = index">
-        <tr>
-            <td class="cell user-id">{{item.userId}}</td>
-            <td class="cell id">{{item.id}}</td>
-            <td class="cell title">{{item.title}}</td>
-            <td class="cell completed">{{item.completed}}</td>
-        </tr>
-</div> 
+<ng-template #table>
+    <tr class="header">
+        <td class="cell user-id">userId</td>
+        <td class="cell id">id</td>
+        <td class="cell title">title</td>
+        <td class="cell completed">completed</td>
+    </tr>
+
+    <div class="table" *ngFor= "let item of inetTodos; let i = index">
+            <tr>
+                <td class="cell user-id">{{item.userId}}</td>
+                <td class="cell id">{{item.id}}</td>
+                <td class="cell title">{{item.title}}</td>
+                <td class="cell completed">{{item.completed}}</td>
+            </tr>
+    </div> 
+</ng-template>

@@ -1,5 +1,5 @@
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { SearchAndFiltModel } from './../../shared/todoModel';
+import { ISearchAndFilt } from './../../shared/ISearchAndFilt';
 import { Component, OnInit } from '@angular/core';
 import { TodoModel } from '../../shared/todoModel';
 import { TodoService } from '../../shared/todo.service'
@@ -12,21 +12,17 @@ import { Observable} from 'rxjs';
 })
 export class LocalDataComponent implements OnInit {
 
-  form: FormsModule;
 
-  title = 'todo';
-  search = '';
+  title = "todo's by Monah";
+  public search :ISearchAndFilt = new SearchAndFiltModel();
   items: Observable<any>;
   actionPack: TodoModel;
   editModal:boolean = false; 
 
-  constructor(public taskSvc: TodoService){}
+  constructor(public taskSvc: TodoService){ }
   
   ngOnInit (){
-    // this.form = new FormGroup(
-    //   {}
-    //)
-
+    
     this.taskSvc.load();
     this.items = this.taskSvc.items;
     this.taskSvc.items.subscribe() 
@@ -50,9 +46,10 @@ export class LocalDataComponent implements OnInit {
     this.editModal = false;
     this.taskSvc.remove(item.date);
   }
-  onSearch(event : string){
-    this.search = event;
-  }
 
+  onSearchAndFilt(event : ISearchAndFilt){
+    this.search = event;
+
+  }
 
 }

@@ -27,6 +27,10 @@ tr{
         }
     }
 }
-div:nth-child(even){
+.table:nth-child(even){
     background-color: rgb(212, 212, 231);
+}
+.loadnig{
+    text-align: center;
+    margin: 1em;
 }

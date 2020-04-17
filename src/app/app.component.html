@@ -1,11 +1,10 @@
-
-  <div>
+<div class="wrap">
+  <div class="navbar">
     <ul>
       <li routerLink='/local-data' routerLinkActive="active" >локальные данные</li>
       <li [routerLink]="['/from-net']" routerLinkActive="active">данные с сервера</li>
     </ul>
   </div>
 
-  
 <router-outlet></router-outlet>
-
+</div>
